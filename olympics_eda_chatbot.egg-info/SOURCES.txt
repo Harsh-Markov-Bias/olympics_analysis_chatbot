@@ -1,0 +1,6 @@
+setup.py
+olympics_eda_chatbot.egg-info/PKG-INFO
+olympics_eda_chatbot.egg-info/SOURCES.txt
+olympics_eda_chatbot.egg-info/dependency_links.txt
+olympics_eda_chatbot.egg-info/requires.txt
+olympics_eda_chatbot.egg-info/top_level.txt

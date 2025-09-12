@@ -1,0 +1,12 @@
+pandas
+numpy
+seaborn
+streamlit
+plotly
+scipy>=1.15.3
+matplotlib
+fastapi
+uvicorn[standard]
+python-dotenv
+gradio
+flask

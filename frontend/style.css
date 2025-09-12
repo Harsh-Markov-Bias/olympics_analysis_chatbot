@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin: 0;
+    height: 100vh;
+  }
+  #sidebar {
+    width: 300px;
+    background: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  #content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  select, button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background: #333;
+    color: white;
+  }
+  /* Position the Dialogflow messenger at bottom right */
+  df-messenger {
+    --df-messenger-bot-message: #1976d2;
+    --df-messenger-button-titlebar-color: #1976d2;
+    --df-messenger-chat-background-color: #fafafa;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+    width: 350px;
+    height: 500px;
+  }
+  img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .stats-row {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .stats-col {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #eee;
+    padding: 10px 0;
+  }
+  .stats-col:last-child {
+    border-right: none;
+  }
+  .stat {
+    font-size: 2em;
+    margin-top: 10px;
+  }
+  .form-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+label {
+  font-weight: 600;
+  min-width: 120px;
+}
+
+select {
+  padding: 6px 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#sports-selector {
+  height: 160px;
+  min-width: 220px;
+}
+
+#plot-age-dist-btn {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 18px;
+  font-size: 1rem;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+#plot-age-dist-btn:hover {
+  background-color: #0056b3;
+}
+
+#sport_medal_age_dist_plot {
+  margin-top: 24px;
+}
+
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  label {
+    font-weight: 600;
+    min-width: 120px;
+  }
+  
+  select {
+    padding: 6px 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #sports-selector {
+    height: 160px;
+    min-width: 220px;
+  }
+  
+  #plot-age-dist-btn {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 18px;
+    font-size: 1rem;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+  }
+  
+  #plot-age-dist-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  #sport_medal_age_dist_plot {
+    margin-top: 24px;
+  }
+  

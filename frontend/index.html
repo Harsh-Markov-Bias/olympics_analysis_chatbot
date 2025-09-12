@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Olympics Medal Tally & Chatbot</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"
+      defer
+    ></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="sidebar">
+      <h2>Olympics Analysis</h2>
+
+      <img src="olympics_img.png" alt="Olympics Image" />
+
+      <label for="yearSelect">Select Year</label>
+      <select id="yearSelect"></select>
+
+      <label for="countrySelect">Select Country</label>
+      <select id="countrySelect"></select>
+
+      <button onclick="fetchMedalTally()">Show Medal Tally</button>
+
+      <button id="overall-analysis-btn">Overall Analysis</button>
+      <button id="btn-country-wise">Country-Wise Analysis</button>
+      <button id="btn-Athlete-Wise">Athlete Wise Analysis</button>
+    </div>
+    <div id="content">
+      <h1 id="title">Medal Tally</h1>
+      <div id="results"></div>
+    </div>
+
+    <df-messenger
+      intent="WELCOME"
+      chat-title="IOC_chatbot"
+      agent-id="02c1de38-64ca-44b3-ae80-885d98aa5aee"
+      language-code="en"
+    ></df-messenger>
+  </body>
+</html>

@@ -105,3 +105,7 @@ Thumbs.db
 # IDE/editor folders (if you want)
 .vscode/
 .idea/
+
+__pycache__/
+*.pyc
+*.mp4

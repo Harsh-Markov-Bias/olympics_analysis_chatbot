@@ -27,6 +27,40 @@ function buildTable(data) {
   table += '</tbody></table>';
   return table;
 }
+
+
+function buildTableCountry(data) {
+  // console.log(typeof(data))
+  // console.log('here is data', data[0]['Year'])  
+  // console.log('here is data', data) 
+  if (!data || data.length === 0) {
+    return '<p>Sorry! No Awards for this selection.</p>';
+  }
+  let columns = []
+  if (data[0].Year !== undefined){
+    columns = ['Year','Gold', 'Silver', 'Bronze', 'Total'];
+  }
+  else {
+    columns = ['Gold', 'Silver', 'Bronze', 'Total'];
+   } // fixed order
+  let table = '<table><thead><tr>';
+  
+  columns.forEach(col => {
+    table += `<th>${col}</th>`;
+  });
+  table += '</tr></thead><tbody>';
+
+  data.forEach(row => {
+    table += '<tr>';
+    columns.forEach(col => {
+      table += `<td>${row[col]}</td>`;
+    });
+    table += '</tr>';
+  });
+
+  table += '</tbody></table>';
+  return table;
+}
 // New function to populate years and countries dynamically
 async function populateDropdowns() {
   try {
@@ -71,8 +105,12 @@ async function fetchMedalTally() {
       })
     });
     const data = await response.json();
-    // console.log(data)
-    resultsEl.innerHTML = buildTable(data.medal_tally);
+    
+    if ( (selectedCountry === 'OverAll') || (selectedYear === 'OverAll' && selectedCountry === 'OverAll')){
+      console.log('This is inside',data.medal_tally)
+      resultsEl.innerHTML = buildTable(data.medal_tally);
+    }
+    else resultsEl.innerHTML = buildTableCountry(data.medal_tally);
   } catch (error) {
     resultsEl.innerHTML = '<p>Error fetching data.</p>';
     console.error(error);
@@ -638,6 +676,7 @@ const famousSports = [
     'Rhythmic Gymnastics', 'Rugby Sevens', 'Beach Volleyball',
     'Triathlon', 'Rugby', 'Polo', 'Ice Hockey'
   ];
+famousSports.sort();
 
 
 // Handle Athlete Wise Analysis button click

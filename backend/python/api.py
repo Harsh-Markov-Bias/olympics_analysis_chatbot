@@ -1,7 +1,35 @@
 from flask import Flask, request, jsonify
-import helper
+import helper, chatbot_fulfillment
 
 app = Flask(__name__)
+
+
+@app.route('/webhook/dialogflow', methods=['POST'])
+def dialogueflow_webhook():
+    
+    req = request.get_json(force=True)
+
+    print("\n=== Incoming Request ===")
+    print("Full JSON:\n", req)
+    
+    session = req['session']
+    intent = req['queryResult']['intent']['displayName']
+    parameters = req['queryResult']['parameters']
+    contexts = req['queryResult'].get('outputContexts', [])
+
+    print("\n--- Intent & Parameters ---")
+    print("Intent:", intent)
+    print("Parameters:", parameters)
+    print("Output Contexts:")
+    
+    intent_handler_dict = {
+        'GetMedalCount': chatbot_fulfillment.country_medal_by_year_medal_type,
+        'medalcount-followup': chatbot_fulfillment.country_medal_by_year_medal_type,
+        'BestAthleteBySportAndCountry': chatbot_fulfillment.country_Player_by_year_medal_type
+        
+    }
+    return intent_handler_dict[intent](session,parameters,contexts)
+    
 
 @app.route('/api/height_weight_medalists', methods=['POST'])
 def height_vs_weight():
@@ -166,7 +194,7 @@ def api_medal_tally():
         # print(f"year type: {type(year)}, value: {year}")
         # print(f"country type: {type(country)}, value: {country}")
         medal_tally = helper.fetch_medal_tally(year, country)
-        print('api_medal_tally', medal_tally)
+        # print('api_medal_tally', medal_tally)
         # Convert DataFrame to JSON serializable list
         # result = medal_tally.to_dict(orient='records')
         # print("Medal tally result:", medal_tally)  # Debug
@@ -183,4 +211,4 @@ def api_overall_stats():
     return jsonify(stats)
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host='0.0.0.0',port=5001)
